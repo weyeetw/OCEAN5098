@@ -5,6 +5,7 @@ date: "10/25/2021"
 output: html_document
 ---
 
+Reformat this data frame to obtain the weight as a double numeric into one column and the time of measurement as factor with two levels before_diet and after_diet. 
 ```{r}
 name   <- c("subject_1", "subject_2", "subject_3","subject_4","subject_5")
 before_diet<- c(104, 95, 87, 77, 112)
@@ -20,7 +21,11 @@ name.fact <- as.factor(name)
 name.fact
 ```
 
-
+The second element of this list will be another list called WEIGHT_LOSS with three elements: 
+[1] a vector of character extracting the row names of the table previously created; 
+[2] a numeric vector (double) indicating the weight loss (in %) of each subject (can be positive or negative); 
+[3] combine these two elements in a table with two columns: subject and weight_loss. 
+This will be you third element of the WEIGHT_LOSS list. 
 ```{r}
 subject <- name.fact
 weight_loss <- (before_diet-after_diet)/before_diet*100

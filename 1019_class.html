@@ -172,6 +172,7 @@ pre code {
 </div>
 
 
+<p>Reformat this data frame to obtain the weight as a double numeric into one column and the time of measurement as factor with two levels before_diet and after_diet.</p>
 <pre class="r"><code>name   &lt;- c(&quot;subject_1&quot;, &quot;subject_2&quot;, &quot;subject_3&quot;,&quot;subject_4&quot;,&quot;subject_5&quot;)
 before_diet&lt;- c(104, 95, 87, 77, 112)
 after_diet &lt;- c(96, 91, 81, 75, 118)
@@ -189,6 +190,7 @@ BUBBLE_DIET</code></pre>
 name.fact</code></pre>
 <pre><code>## [1] subject_1 subject_2 subject_3 subject_4 subject_5
 ## Levels: subject_1 subject_2 subject_3 subject_4 subject_5</code></pre>
+<p>The second element of this list will be another list called WEIGHT_LOSS with three elements: [1] a vector of character extracting the row names of the table previously created; [2] a numeric vector (double) indicating the weight loss (in %) of each subject (can be positive or negative); [3] combine these two elements in a table with two columns: subject and weight_loss. This will be you third element of the WEIGHT_LOSS list.</p>
 <pre class="r"><code>subject &lt;- name.fact
 weight_loss &lt;- (before_diet-after_diet)/before_diet*100
 C&lt;- data.frame(subject, weight_loss)
