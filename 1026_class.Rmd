@@ -89,6 +89,7 @@ legend("topleft", c("versicolor", "virginica"), pch = 19, cex=1.2,
 ```
 
 
+
 ```{r }
 rairuoho<-read.table('https://www.dipintothereef.com/uploads/3/7/3/5/37359245/rairuoho.txt',header=T, sep="\t", dec='.') 
 rairuoho$treatment <- ifelse(rairuoho$treatment=='nutrient','enriched','water') 
