@@ -6,7 +6,7 @@ output: html_document
 ---
 
 Reformat this data frame to obtain the weight as a double numeric into one column and the time of measurement as factor with two levels before_diet and after_diet. 
-```{r}
+```{r get-the-table}
 name   <- c("subject_1", "subject_2", "subject_3","subject_4","subject_5")
 before_diet<- c(104, 95, 87, 77, 112)
 after_diet <- c(96, 91, 81, 75, 118)
@@ -14,7 +14,17 @@ BUBBLE_DIET <- data.frame(name, before_diet, after_diet)
 BUBBLE_DIET
 ```
 
+```{r}
+library(tidry)
+df %>% gather("key", "value", x, y, z)is now equivalent to df %>% pivot_longer(c(x, y, z), names_to = "key", values_to = "value").
 
+```
+
+
+
+
+
+#cod chunk {r}
 ```{r}
 typeof(name)
 name.fact <- as.factor(name)

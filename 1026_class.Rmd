@@ -1,0 +1,135 @@
+---
+title: "1026_class"
+author: "Wey"
+date: "10/26/2021"
+output: html_document
+---
+add labels to x- and y-axes, title 
+```{r }
+plot(Petal.Length ~ Petal.Width, data = iris,
+     xlab = 'abc (cm)', 
+     ylab = '123 (cm)',
+     main = 'Petal width & length of iris flower') 
+
+```
+
+```{r }
+plot(Petal.Length ~ Petal.Width, data = iris,
+     xlab = 'Petal width (cm)', 
+     ylab = 'Petal length (cm)', 
+     main = 'Petal width and length of iris flower',
+     pch = 24,
+     cex=2, 
+     col = rgb (1, 0.4, 1,0.60))
+
+```
+
+```{r }
+col.iris<-ifelse(iris$Species=='setosa','purple',ifelse(iris$Species=='versicolor',rgb (1, 0.4, 1,0.60),'green')) 
+col.iris
+
+library(scales)
+plot(Petal.Length ~ Petal.Width, data = iris,
+     xlab = 'Petal width (cm)', 
+     ylab = 'Petal length (cm)', 
+     main = 'Petal width and length of iris flower',
+     pch = 18, cex=2, 
+     col = alpha(col.iris, 0.2))
+legend(x="bottomright", pch= 18, cex=1.5, legend= c("versicolor","setosa", "virginica"), col=levels(as.factor(alpha(col.iris, 1))))
+
+```
+
+```{r }
+blossom<-NULL
+blossom$year <- 2010:2019                                           
+blossom$count.alaska <- c(3, 1, 5, 2, 3, 8, 4, 7, 6, 9)
+blossom$count.canada <- c(4, 6, 5, 7, 10, 8, 10, 11, 15, 17)
+as.data.frame(blossom)
+
+y.rng<-range(c(20,-1))
+
+
+plot(count.alaska ~ year,dat = blossom, type='l', ylim = y.rng,
+     lty=2, lwd=1, col='red',
+     ylab = "No. of flower blossoming") 
+lines(count.canada ~ year,dat = blossom,
+      lty=1, lwd=1, col='blue')
+lines(count.canada-2 ~ year,dat = blossom,
+      lty=1, lwd=1, col='green')
+
+```
+
+```{r }
+iris.ver<- subset(iris, Species == "versicolor")
+iris.vir<- subset(iris, Species == "virginica")
+
+y.rng <- range( c(iris.ver$Petal.Length, iris.vir$Petal.Length) , na.rm = TRUE) 
+x.rng <- range( c(iris.ver$Petal.Width, iris.vir$Petal.width) , na.rm = TRUE) 
+
+# Plot an empty plot
+
+plot(Petal.Length ~ Petal.Width, dat = iris.ver,
+     xlab = 'Petal width (cm)', 
+     ylab = 'Petal length (cm)', 
+     main = 'Petal width and length of iris flower',
+     cex.axis=1.0, cex.lab=1.5, cex.main=1.5, type='n',
+     xlim=x.rng,  ylim=y.rng)
+
+# Add points for versicolor
+points(Petal.Length ~ Petal.Width, dat = iris.ver, pch = 20,cex=2, 
+       col = rgb(0,0,1,0.10))
+
+# Add points for versicolor
+points(Petal.Length ~ Petal.Width, dat = iris.vir, pch = 20,cex=2, 
+       col =  alpha('#fc03c6', 0.2))
+
+# Add legend
+legend("topleft", c("versicolor", "virginica"), pch = 19, cex=1.2,
+       col = c(rgb(0,0,1,0.10), alpha('#51A8DD', 1)))
+```
+
+
+```{r }
+rairuoho<-read.table('https://www.dipintothereef.com/uploads/3/7/3/5/37359245/rairuoho.txt',header=T, sep="\t", dec='.') 
+rairuoho$treatment <- ifelse(rairuoho$treatment=='nutrient','enriched','water') 
+head(rairuoho) 
+
+plot(day3 ~ day7,dat=rairuoho,
+     xlab = 'Length at day 3', 
+     ylab = 'Length at day 7', 
+     main = 'Realtionship between the length at day 3 and day 7')
+
+hist(rairuoho$day3, xlab = "length of the plant", main = NA, breaks=10)
+
+hist(rairuoho$day7)
+
+dens.rai <- density(rairuoho$day7, bw=6)
+plot(dens.rai, main = "Density distribution of the length at day 7")
+
+qqnorm(rairuoho$day7,pch = 9, cex=1, )
+qqline(rairuoho$day7)
+
+boxplot(day7~treatment, data=rairuoho) 
+pairs(rairuoho[,1:6])
+```
+
+```{r }
+par(las=1)
+plot(Petal.Length ~ Petal.Width, dat = iris)
+```
+
+
+```{r }
+par(bg="#FEDFE1", mar=c(4,4,4,4), pch = 19, las=1, cex=1.2, cex.main=1.2, cex.axis=1,cex.lab=1)
+
+plot(Petal.Length ~ Petal.Width, dat = iris,
+     xlab = 'Petal width (cm)', 
+     ylab = 'Petal length (cm)', 
+     main = 'Petal width and length of iris flower',
+     col = alpha(col.iris, 0.2)) # set up symbol types and their color 
+
+legend(x="bottomright", pch= 19, cex=0.8, legend= c("versicolor","setosa", "virginica"), col=levels(as.factor(alpha(col.iris, 0.2))))
+```
+
+
+
